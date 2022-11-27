@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val notesDB = DatabaseHandler(this)
+//        val notesDB = DatabaseHandler(this)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.noteFragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController

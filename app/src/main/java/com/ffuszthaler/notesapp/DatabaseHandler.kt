@@ -58,17 +58,25 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, dbName, null,
     }
 
     // get list of all notes
-    fun listOfAllNotes(): MutableList<String>  {
+    fun listOfAllNotes(): MutableList<Note>  {
         val db = this.readableDatabase
-        val cursor = db.rawQuery("select * from $tableName", null)
 
-        val allNotes: MutableList<String> = mutableListOf()
+        // initialize list
+        val allNotes: MutableList<Note> = mutableListOf()
 
-        while (cursor.moveToNext()) {
-            val i = cursor.getColumnIndex(title);
-            if (i >= 0)
-                allNotes.add(cursor.getString(i))
+        // get all entries from table and put it into the list
+        db.rawQuery("SELECT * FROM $tableName",null).use {
+            while(it.moveToNext()){
+                allNotes.add(
+                    Note(
+                        title = it.getString(it.getColumnIndex(MessageDatabase.title) as Int),
+                        body = it.getString(it.getColumnIndex(MessageDatabase.body) as Int),
+                        category = it.getString(it.getColumnIndex(MessageDatabase.category) as Int)
+                    )
+                )
+            }
         }
+
         return allNotes
     }
 }

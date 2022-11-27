@@ -15,10 +15,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 
 class HomeFragment : Fragment() {
-    lateinit var notesDB: SQLiteOpenHelper
+    lateinit var notesDB: DatabaseHandler
     lateinit var noteList: MutableList<Note>
-//    private var noteList = notesDB.listOfAllNotes()
-//    private lateinit var noteList : MutableList<Note>
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var noteListAdapter: NoteListAdapter
@@ -32,7 +30,7 @@ class HomeFragment : Fragment() {
 
         val activityContext = context
         notesDB = DatabaseHandler(activityContext)
-        noteList = (notesDB as DatabaseHandler).listOfAllNotes()
+        noteList = notesDB.listOfAllNotes()
     }
 
     override fun onCreateView(
@@ -67,5 +65,12 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
         }
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // recycleview is not updating correctly, Lifecycle?
+//        noteListAdapter.notifyDataSetChanged()
     }
 }

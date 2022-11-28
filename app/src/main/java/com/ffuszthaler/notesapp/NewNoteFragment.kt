@@ -1,7 +1,6 @@
 package com.ffuszthaler.notesapp
 
 import android.content.Context
-import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.fragment.findNavController
 
 class NewNoteFragment : Fragment() {
     lateinit var notesDB: DatabaseHandler
@@ -44,6 +43,10 @@ class NewNoteFragment : Fragment() {
         val newNoteAddButton = view.findViewById<Button>(R.id.newNoteAddButton)
         newNoteAddButton.setOnClickListener() {
             saveNote(view)
+
+            val noteNavController = findNavController()
+            val action = NewNoteFragmentDirections.actionNewNoteFragmentToHomeFragment()
+            noteNavController.navigate(action)
         }
 
         return view
@@ -55,7 +58,6 @@ class NewNoteFragment : Fragment() {
 
 
     private fun saveNote(view: View) {
-
         val newNoteTitle = view.findViewById<EditText>(R.id.newNoteTitle)
         val title: String = newNoteTitle.text.toString()
         Log.d("TAG","title: $title")

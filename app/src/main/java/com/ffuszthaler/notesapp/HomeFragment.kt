@@ -1,7 +1,6 @@
 package com.ffuszthaler.notesapp
 
 import android.content.Context
-import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +18,7 @@ class HomeFragment : Fragment() {
     lateinit var noteList: MutableList<Note>
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var noteListAdapter: NoteListAdapter
+    lateinit var noteListAdapter: NoteListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +47,6 @@ class HomeFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = staggeredGridLayoutManager
 
-
 //        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
         noteListAdapter = NoteListAdapter(noteList)
@@ -65,12 +63,5 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
         }
         return view
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        // recycleview is not updating correctly, Lifecycle?
-//        noteListAdapter.notifyDataSetChanged()
     }
 }

@@ -1,3 +1,7 @@
 package com.ffuszthaler.notesapp
 
-data class Note(val id: String, val title: String, val body: String, val category: String)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Note(val id: String, val title: String, val body: String, val category: String): Parcelable

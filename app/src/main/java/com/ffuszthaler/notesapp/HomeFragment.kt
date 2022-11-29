@@ -52,6 +52,11 @@ class HomeFragment : Fragment() {
         noteListAdapter = NoteListAdapter(noteList)
         recyclerView.adapter = noteListAdapter
 
+        noteListAdapter.onItemClick = { note ->
+//            findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(note))
+        }
+
         val newNoteButton = view.findViewById<Button>(R.id.newNoteButton)
         newNoteButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_newNoteFragment)

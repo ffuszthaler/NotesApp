@@ -60,7 +60,6 @@ class NewNoteFragment : Fragment() {
     private fun saveNote(view: View) {
         val newNoteTitle = view.findViewById<EditText>(R.id.newNoteTitle)
         val title: String = newNoteTitle.text.toString()
-        Log.d("TAG","title: $title")
 
         val newNoteBody = view.findViewById<EditText>(R.id.newNoteBody)
         val body: String = newNoteBody.text.toString()

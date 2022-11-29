@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteListAdapter(private val noteList: MutableList<Note>): RecyclerView.Adapter<NoteListAdapter.NoteViewHolder>() {
+    var onItemClick : ((Note) -> Unit)? = null
 
     class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val noteTitle: TextView = itemView.findViewById(R.id.noteTitle)
@@ -22,6 +23,10 @@ class NoteListAdapter(private val noteList: MutableList<Note>): RecyclerView.Ada
         val note = noteList[position]
         holder.noteTitle.text = note.title
         holder.noteBody.text = note.body
+
+        holder.itemView.setOnClickListener() {
+            onItemClick?.invoke(note)
+        }
     }
 
     override fun getItemCount(): Int {

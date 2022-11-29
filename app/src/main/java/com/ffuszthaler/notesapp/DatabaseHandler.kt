@@ -71,6 +71,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, dbName, null,
             while(it.moveToNext()){
                 allNotes.add(
                     Note(
+                        id = it.getString(it.getColumnIndex(MessageDatabase.id) as Int),
                         title = it.getString(it.getColumnIndex(MessageDatabase.title) as Int),
                         body = it.getString(it.getColumnIndex(MessageDatabase.body) as Int),
                         category = it.getString(it.getColumnIndex(MessageDatabase.category) as Int)

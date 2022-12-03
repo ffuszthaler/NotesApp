@@ -59,10 +59,20 @@
         android:layout_marginBottom="32dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/editNoteDeleteButton"
         app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <Button-->
+    <Button
+        android:id="@+id/editNoteDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editNoteSaveButton" />
+
+    <!--    <Button-->
 <!--        android:id="@+id/editNoteBackButton"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->

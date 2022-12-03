@@ -50,13 +50,13 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, dbName, null,
         contentValues.put(body, noteBody)
         contentValues.put(category, noteCategory)
 
-        return db.update(tableName, contentValues, "_id = ?", arrayOf(noteId))
+        return db.update(tableName, contentValues, "id = ?", arrayOf(noteId))
     }
 
     // delete a specific note
     fun deleteData(noteId : String) : Int {
         val db = this.writableDatabase
-        return db.delete(tableName,"_id = ?", arrayOf(noteId))
+        return db.delete(tableName,"id = ?", arrayOf(noteId))
     }
 
     // get list of all notes

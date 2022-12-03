@@ -53,7 +53,6 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = noteListAdapter
 
         noteListAdapter.onItemClick = { note ->
-//            findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(note))
         }
 
@@ -63,10 +62,10 @@ class HomeFragment : Fragment() {
         }
 
         // temporary, will probably be apart of the recyclerview for the note list
-        val editNoteButton = view.findViewById<Button>(R.id.editNoteButton)
-        editNoteButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
-        }
+//        val editNoteButton = view.findViewById<Button>(R.id.editNoteButton)
+//        editNoteButton.setOnClickListener {
+//            findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
+//        }
         return view
     }
 }

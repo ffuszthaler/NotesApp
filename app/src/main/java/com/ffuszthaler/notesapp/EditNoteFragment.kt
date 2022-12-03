@@ -96,7 +96,6 @@ class EditNoteFragment : Fragment() {
                 val noteNavController = findNavController()
                 val action = EditNoteFragmentDirections.actionEditNoteFragmentToHomeFragment()
                 noteNavController.navigate(action)
-
             }
             .setNegativeButton("No") { dialog, which ->
                 dialog.dismiss()

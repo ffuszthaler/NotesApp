@@ -1,5 +1,6 @@
 package com.ffuszthaler.notesapp
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,8 @@ import androidx.navigation.fragment.navArgs
 class EditNoteFragment : Fragment() {
     private val args: EditNoteFragmentArgs by navArgs()
     lateinit var notesDB: DatabaseHandler
+    lateinit var activityContext: Context
+
     private lateinit var editTitle: TextView
     private lateinit var editBody: TextView
     private lateinit var editCategory: Spinner
@@ -26,7 +29,7 @@ class EditNoteFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        val activityContext = context
+        activityContext = context
         notesDB = DatabaseHandler(activityContext)
     }
 
@@ -49,10 +52,6 @@ class EditNoteFragment : Fragment() {
         val editNoteDeleteButton = view.findViewById<Button>(R.id.editNoteDeleteButton)
         editNoteDeleteButton.setOnClickListener() {
             deleteNote(view)
-
-            val noteNavController = findNavController()
-            val action = EditNoteFragmentDirections.actionEditNoteFragmentToHomeFragment()
-            noteNavController.navigate(action)
         }
 
         return view
@@ -85,7 +84,25 @@ class EditNoteFragment : Fragment() {
     }
 
     private fun deleteNote(view: View) {
-        val id = args.note.id
-        notesDB.deleteData(id)
+        val builder = AlertDialog.Builder(activityContext)
+
+        builder.setTitle("Delete Note?")
+        builder.setMessage("This note will be permanently deleted.")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { dialog, which ->
+                val id = args.note.id
+                notesDB.deleteData(id)
+
+                val noteNavController = findNavController()
+                val action = EditNoteFragmentDirections.actionEditNoteFragmentToHomeFragment()
+                noteNavController.navigate(action)
+
+            }
+            .setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+
+        val alert = builder.create()
+        alert.show()
     }
 }

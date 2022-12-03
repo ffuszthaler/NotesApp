@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class DatabaseHandler(context: Context): SQLiteOpenHelper(context, dbName, null, 1 ) {
     private val allNotes: MutableList<Note> = mutableListOf()
 
-    companion object MessageDatabase{
+    companion object NoteDatabase{
         private const val dbName:String = "NotesDB"
         private const val tableName = "notes"
         private const val id = "id"
@@ -63,18 +63,15 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, dbName, null,
     fun listOfAllNotes(): MutableList<Note>  {
         val db = this.readableDatabase
 
-        // initialize list
-//        val allNotes: MutableList<Note> = mutableListOf()
-
         // get all entries from table and put it into the list
         db.rawQuery("SELECT * FROM $tableName",null).use {
             while(it.moveToNext()){
                 allNotes.add(
                     Note(
-                        id = it.getString(it.getColumnIndex(MessageDatabase.id) as Int),
-                        title = it.getString(it.getColumnIndex(MessageDatabase.title) as Int),
-                        body = it.getString(it.getColumnIndex(MessageDatabase.body) as Int),
-                        category = it.getString(it.getColumnIndex(MessageDatabase.category) as Int)
+                        id = it.getString(it.getColumnIndex(NoteDatabase.id) as Int),
+                        title = it.getString(it.getColumnIndex(NoteDatabase.title) as Int),
+                        body = it.getString(it.getColumnIndex(NoteDatabase.body) as Int),
+                        category = it.getString(it.getColumnIndex(NoteDatabase.category) as Int)
                     )
                 )
             }

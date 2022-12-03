@@ -35,11 +35,6 @@ class NewNoteFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_new_note, container, false)
 
-//        val newNoteBackButton = view.findViewById<Button>(R.id.newNoteBackButton)
-//        newNoteBackButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_newNoteFragment_to_homeFragment)
-//        }
-
         val newNoteAddButton = view.findViewById<Button>(R.id.newNoteAddButton)
         newNoteAddButton.setOnClickListener() {
             saveNote(view)
@@ -55,7 +50,6 @@ class NewNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
-
 
     private fun saveNote(view: View) {
         val newNoteTitle = view.findViewById<EditText>(R.id.newNoteTitle)

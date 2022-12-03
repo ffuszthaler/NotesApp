@@ -61,11 +61,6 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_newNoteFragment)
         }
 
-        // temporary, will probably be apart of the recyclerview for the note list
-//        val editNoteButton = view.findViewById<Button>(R.id.editNoteButton)
-//        editNoteButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
-//        }
         return view
     }
 }

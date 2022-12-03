@@ -37,11 +37,6 @@ class EditNoteFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edit_note, container, false)
 
-//        val editNoteBackButton = view.findViewById<Button>(R.id.editNoteBackButton)
-//        editNoteBackButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_editNoteFragment_to_homeFragment)
-//        }
-
         val editNoteSaveButton = view.findViewById<Button>(R.id.editNoteSaveButton)
         editNoteSaveButton.setOnClickListener() {
             updateNote(view)
@@ -66,8 +61,6 @@ class EditNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        Log.d("TAG", "ARGS: ${args}")
-
         editTitle = view.findViewById<TextView>(R.id.editNoteTitle)
         editTitle.text = args.note.title.toString()
 
@@ -88,14 +81,11 @@ class EditNoteFragment : Fragment() {
         val body = editBody.text.toString()
         val category = editCategory.selectedItem.toString()
 
-        Log.d("TAG", "ARGS: id:${id}, title:${title}, body:${body}, cat:${category}")
-
         notesDB.updateData(id, title, body, category)
     }
 
     private fun deleteNote(view: View) {
         val id = args.note.id
-
         notesDB.deleteData(id)
     }
 }

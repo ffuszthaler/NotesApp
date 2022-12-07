@@ -13,18 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val notesDB = DatabaseHandler(this)
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.noteFragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 
         // back buttons in navbar
         setupActionBarWithNavController(navController)
-
-//        val addNoteButton = findViewById<Button>(R.id.addNoteButton) as Button
-//        addNoteButton.setOnClickListener {
-//            notesDB.insertData("title1", "hi there... :>", "shopping")
-//        }
     }
 
     // correctly handle back stack with fragments

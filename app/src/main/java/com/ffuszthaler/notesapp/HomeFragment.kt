@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-
 class HomeFragment : Fragment() {
     lateinit var notesDB: DatabaseHandler
     lateinit var noteList: MutableList<Note>

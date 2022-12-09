@@ -24,11 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         // Forces system dark mode for the app
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    }
 
-
-        // correctly handle back stack with fragments
-        fun onSupportNavigateUp(): Boolean {
-            return navController.navigateUp() || super.onSupportNavigateUp()
-        }
+    // correctly handle back stack with fragments
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
     tools:context=".HomeFragment">
 
     <TextView
@@ -16,6 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:text="New Note"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,12 +28,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginBottom="128dp"
-        app:layout_constraintBottom_toTopOf="@+id/newNoteButton"
+        android:layout_marginBottom="24dp"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:spanCount="2"
+        tools:listitem="@layout/note_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

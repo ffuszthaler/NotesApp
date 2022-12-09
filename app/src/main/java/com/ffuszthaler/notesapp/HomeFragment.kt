@@ -40,13 +40,9 @@ class HomeFragment : Fragment() {
 
         // manage recyclerview
         recyclerView = view.findViewById(R.id.notesRecyclerView)
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
 
         // setting recycler view layout to staggered grid
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = staggeredGridLayoutManager
-
-//        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
         noteListAdapter = NoteListAdapter(noteList)
         recyclerView.adapter = noteListAdapter
